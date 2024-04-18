@@ -27,6 +27,9 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
     Tile food;
     Random random;
 
+    //High Score
+    int highScore;
+
     //Game Logic
     Timer gameLoop;
     int velocityX;
@@ -43,6 +46,8 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
 
         snakeHead = new Tile(5, 5);
         snakeBody = new ArrayList<>();
+
+        highScore = 0;
 
         food = new Tile(10, 10);
         random = new Random();
@@ -82,9 +87,16 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
         if (gameOver){
             g.setColor(Color.red);
             g.drawString("Game Over: " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
-            g.drawString("Press Space to Restart", tileSize - 16, tileSize + 24);
+            g.drawString("High Score: " + highScore, tileSize - 16, tileSize + 20);
+            g.drawString("Press Space to Restart", tileSize - 16, tileSize + 50);
         } else {
             g.drawString("Score: " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
+
+            //High Score
+            if (highScore < snakeBody.size()){
+                highScore = snakeBody.size();
+            }
+            g.drawString("High Score: " + highScore, tileSize - 16, tileSize + 20);
         }
     }
 
