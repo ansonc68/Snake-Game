@@ -1,4 +1,4 @@
-# Snake-Game (Java)
+# Snake Game (Java)
 Project Learning
 
 
